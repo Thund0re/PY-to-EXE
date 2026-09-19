@@ -46,11 +46,6 @@ All intermediate files are automatically deleted.
 
 > <img width="900" height="837" alt="image" src="https://github.com/user-attachments/assets/0b56d47c-d8af-4d8d-8c77-baca3d6d64b9" />
 
-
-| Main Window | Build in Progress | Successful Build |
-|-------------|-------------------|------------------|
-| ![Main](screenshots/main.png) | ![Building](screenshots/building.png) | ![Success](screenshots/success.png) |
-
 ---
 
 ## 🚀 Requirements
