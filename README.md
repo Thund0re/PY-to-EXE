@@ -1,63 +1,77 @@
-# PY-to-EXE
-A clean, modern desktop tool that compiles any Python script into a standalone executable using PyInstaller.
+# ByteForge - Python to Executable Builder
 
-# App Builder
-
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)]()
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![PyInstaller](https://img.shields.io/badge/Built%20with-PyInstaller-orange.svg)](https://pyinstaller.org/)
-
-A clean, modern desktop tool that turns any Python script into a **standalone executable** with one click.
+A modern, lightweight graphical desktop utility designed to compile Python scripts into standalone `.exe` executables with automated dependency packaging, real-time logging diagnostics, and customizable output routing.
 
 ---
 
-## ✨ Features
+## Key Highlights
 
-- **One-click build** – Select a `.py` file and get a ready-to-run executable
-- **Automatic dependency handling** – Detects packages with `pipreqs` and optionally installs them
-- **Clean output structure** – Creates a timestamped folder inside your project and places **only** the final executable there
-- **Automatic cleanup** – Removes all temporary files (`build/`, `dist/`, `.spec`, etc.) after success
-- **Real-time log** – Live streaming of the entire build process with color coding
-- **Progress bar** – Lightweight visual progress without slowing the build
-- **Cancel support** – Stop an ongoing build at any time
-- **Flexible options**
-  - One-file or one-directory mode
-  - Windowed (no console) mode
-  - Custom executable name
-  - Optional UPX compression
-  - Auto-run after successful build
-- **Recent files** – Quick access to previously built scripts
-- **Open Output / Copy Path** – Convenient post-build actions
-- **Persistent settings** – Remembers window size and last used options
+- **Flexible Output Routing**: Choose between generating a dedicated `portables/` folder or compiling directly within the script directory.
+- **Full PyInstaller Feature Set**:
+  - Single executable (`--onefile`) or directory distribution (`--onedir`).
+  - Windowed mode (`--windowed`) for GUI applications without terminal popups.
+  - Optional UPX compression for smaller binaries.
+  - Custom executable naming with character sanitization.
+  - Support for custom resource packaging (`--add-data`) and hidden imports (`--hidden-import`).
+- **Live Diagnostics Console**:
+  - Non-blocking streaming output with categorized color tags (info, warning, error, command).
+  - One-click log clipboard export and auto-scroll control.
+  - Dedicated scrollbar with responsive auto-resizing.
+- **Thread-Safe Architecture**: Asynchronous build queue prevents Tkinter interface freezes during long compilations.
+- **Windows Process Tree Control**: Clean cancellation that terminates compiler worker trees to avoid locked directory errors.
+- **Config Persistence**: Automatically remembers your favorite flags, window dimensions, and recently built scripts across sessions.
 
 ---
 
-## 📁 Output Structure
+## Prerequisites
 
-After a successful build you get a clean result:
+1. **Python 3.8+** installed on your system.
+2. **PyInstaller**:
+   ```bash
+   pip install pyinstaller
+   ```
 
-
-All intermediate files are automatically deleted.
-
----
-
-## 📸 Screenshots
-
-> <img width="900" height="837" alt="image" src="https://github.com/user-attachments/assets/0b56d47c-d8af-4d8d-8c77-baca3d6d64b9" />
-
----
-
-## 🚀 Requirements
-
-- Python **3.8+**
-- Packages:
-  ```bash
-  pip install pyinstaller pipreqs
-
-How to Run
+*(Optional)* Install `pipreqs` if you want automatic generation of `requirements.txt` from imported project modules:
 ```bash
-python app_builder.py
+pip install pipreqs
 ```
 
+---
 
+## Quick Start
+
+1. Clone or download this repository.
+2. Launch the application:
+   ```bash
+   python main.py
+   ```
+3. Use the interface to:
+   - Select your target `.py` entrypoint.
+   - (Optional) Select a `.ico` file.
+   - Choose your output destination (`portables/` or script directory).
+   - Configure compilation options as needed.
+   - Click **Build Executable**.
+
+---
+
+## Output Structure
+
+Depending on your selected output mode:
+
+- **Portables folder (`portables/`)**:
+  - **Single-file mode**: `<script_dir>/portables/<app_name>.exe`
+  - **Directory mode**: `<script_dir>/portables/<app_name>/` (contains executable and associated runtime assets)
+- **Same folder**:
+  - Creates `<script_dir>/<app_name>.exe` directly beside your source code.
+
+---
+
+## Project Structure
+
+```text
+PY-to-EXE/
+├── main.py          # Primary application source code
+├── README.md        # Documentation and usage guide
+├── requirements.txt # Python dependencies
+└── .gitignore       # Git exclusion rules
+```
