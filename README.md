@@ -1,4 +1,4 @@
-# ByteForge - Python to Executable Builder
+# Python to Executable Builder
 
 A modern, lightweight graphical desktop utility designed to compile Python scripts into standalone `.exe` executables with automated dependency packaging, real-time logging diagnostics, and customizable output routing.
 
